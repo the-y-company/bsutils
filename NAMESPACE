@@ -2,4 +2,7 @@
 
 export(accordion)
 export(accordionItem)
+export(alert)
+export(alertHeading)
 import(shiny)
+importFrom(htmltools,tagAppendAttributes)

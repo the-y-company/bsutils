@@ -25,3 +25,24 @@ Collapse button.
 \item \code{collapseContent}: Collapse button
 }}
 
+\examples{
+library(shiny)
+
+ui <- fluidPage(
+  theme = bslib::bs_theme(version = 5L),
+  collapseButton(
+    collapseContent(
+      "Some collapsed content"
+    ),
+    "Reveal"
+  )
+)
+
+server <- \(input, output, session){
+
+}
+
+if(interactive())
+ shinyApp(ui, server)
+
+}

@@ -7,6 +7,26 @@
 #' @param ... Passed to the button.
 #' @param class Additional classes to pass to the button.
 #' 
+#' @examples 
+#' library(shiny)
+#' 
+#' ui <- fluidPage(
+#'   theme = bslib::bs_theme(version = 5L),
+#'   collapseButton(
+#'     collapseContent(
+#'       "Some collapsed content"
+#'     ),
+#'     "Reveal"
+#'   )
+#' )
+#' 
+#' server <- \(input, output, session){
+#' 
+#' }
+#' 
+#' if(interactive())
+#'  shinyApp(ui, server)
+#' 
 #' @export 
 #' @name collapseButton
 collapseButton <- \(

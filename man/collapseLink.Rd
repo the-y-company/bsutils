@@ -2,24 +2,17 @@
 % Please edit documentation in R/collapse.R
 \name{collapseLink}
 \alias{collapseLink}
-\alias{collapseLink.collapseContent}
 \title{Collapse Link}
 \usage{
-collapseLink(content, ...)
-
-\method{collapseLink}{collapseContent}(content, ...)
+collapseLink(..., id = NULL, class = "")
 }
 \arguments{
-\item{content}{An object of class \code{collapseContent}
-as returned by \code{\link[=collapseContent]{collapseContent()}}.}
-
 \item{...}{Passed to the link.}
+
+\item{id}{Link id.}
+
+\item{class}{Additional class to pass to the link.}
 }
 \description{
 Collapse link.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{collapseContent}: Collapse button
-}}
-

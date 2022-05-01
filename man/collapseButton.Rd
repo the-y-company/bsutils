@@ -2,39 +2,32 @@
 % Please edit documentation in R/collapse.R
 \name{collapseButton}
 \alias{collapseButton}
-\alias{collapseButton.collapseContent}
 \title{Collapse Button}
 \usage{
-collapseButton(content, ..., class = "")
-
-\method{collapseButton}{collapseContent}(content, ..., class = "")
+collapseButton(..., id = NULL, class = "")
 }
 \arguments{
-\item{content}{An object of class \code{collapseContent}
-as returned by \code{\link[=collapseContent]{collapseContent()}}.}
-
 \item{...}{Passed to the button.}
+
+\item{id}{Button id.}
 
 \item{class}{Additional classes to pass to the button.}
 }
 \description{
 Collapse button.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{collapseContent}: Collapse button
-}}
-
 \examples{
 library(shiny)
 
 ui <- fluidPage(
   theme = bslib::bs_theme(version = 5L),
-  collapseButton(
+  collapse(
+    collapseButton(
+      "Reveal"
+    ),
     collapseContent(
       "Some collapsed content"
-    ),
-    "Reveal"
+    )
   )
 )
 

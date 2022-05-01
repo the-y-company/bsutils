@@ -22,6 +22,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Dropdown
 - Offcanvas
 - Progress
+- Toast
 
 ## Example
 

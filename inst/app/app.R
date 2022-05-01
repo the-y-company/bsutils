@@ -193,10 +193,48 @@ offcanvas(
     tags$script(
       src = "https://unpkg.com/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js"
     )
+  ),
+  tabPanel(
+    "Progress",
+    actionButton(
+      "rand",
+      "Randomise"
+    ),
+    progress(
+      progressBar(15, id = "bar")
+    )
+  ),
+  tabPanel(
+    "Toast",
+    toast(
+      "toast",
+      toastHeader(
+        strong(
+          "Toast",
+          class = "me-auto"
+        )
+      ),
+      toastBody("The body of the toast!")
+    ),
+    h1("Hello"),
+    actionButton("show", "Show toast"),
+    actionButton("hide", "Hide toast")
   )
 )
 
 server <- \(input, output, session) {
+
+  observeEvent(input$rand, {
+    update_progress("bar", sample(10:99, 1))
+  })
+
+  observeEvent(input$show, {
+    toast_show("toast", auto_hide = FALSE)
+  })
+
+  observeEvent(input$hide, {
+    toast_hide("toast")
+  })
 
 }
 

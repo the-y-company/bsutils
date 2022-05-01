@@ -31,6 +31,7 @@ Make sure you use __Bootstrap version 5__.
 
 ```r
 library(shiny)
+library(bsutils)
 
 ui <- fluidPage(
   theme = bslib::bs_theme(version = 5L),

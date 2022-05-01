@@ -1,18 +1,20 @@
-#' Offcanvas Button
+#' Offcanvas
 #' 
-#' Offcanvas button trigger.
+#' Create an offcanvas element.
 #' 
-#' @param content Content of the offcanvas as returned by 
+#' @param trigger A [collapseButton()] or [collapseLink()].
+#' @param content The offcanvas content as returned by
 #' [offcanvasContent()].
-#' @param ... Passed to the button.
-#' @param class Additional class to pass to the button.
 #' 
 #' @examples 
 #' library(shiny)
 #' 
 #' ui <- fluidPage(
 #'   theme = bslib::bs_theme(version = 5L),
-#'   offcanvasButton(
+#'   offcanvas(
+#'     offcanvasButton(
+#'       "Open"
+#'     ),
 #'     offcanvasContent(
 #'       offcanvasHeader(
 #'         "Off canvas"
@@ -20,8 +22,7 @@
 #'       p(
 #'         "Hello world"
 #'       )
-#'     ),
-#'     "Open"
+#'     )
 #'   )
 #' )
 #' 
@@ -32,40 +33,99 @@
 #' if(interactive())
 #'  shinyApp(ui, server)
 #' 
-#' @name offcanvasButton
+#' @importFrom htmltools tagGetAttribute
+#' 
+#' @name offcanvas
+#' @export
+offcanvas <- \(trigger, content) UseMethod("offcanvas")
+
+#' @describeIn offcanvas Offcanvas Wrapper
+#' @method offcanvas offcanvasTrigger
+#' @export 
+offcanvas.offcanvasTrigger <- \(
+  trigger,
+  content
+){
+  if(missing(trigger))
+    stop("Missing `trigger`")
+
+  if(missing(content))
+    stop("Missing `content`")
+
+  target_id <- tagGetAttribute(content, "id")
+
+  tagList(
+    trigger(target_id),
+    content
+  )
+}
+
+#' Offcanvas Button
+#' 
+#' Offcanvas button trigger.
+#' 
+#' @param ... Passed to the button.
+#' @param id ID of the button.
+#' @param class Additional class to pass to the button.
 #' 
 #' @export
 offcanvasButton <- \(
-  content,
   ...,
+  id = NULL,
   class = ""
 ) {
-  UseMethod("offcanvasButton")
-}
+  id <- get_id(id)
+  class <- sprintf("btn btn-default action-button %s", class)
 
-#' @importFrom htmltools tagGetAttribute
-#' @describeIn offcanvasButton Button for offcanvas content
-#' @method offcanvasButton offcanvasContent
-#' @export 
-offcanvasButton.offcanvasContent <- \(
-  content,
-  ...,
-  class = ""
-) {
-  target_id <- tagGetAttribute(content, "id")
-
-  class <- sprintf("btn btn-default %s", class)
-
-  tagList(
+  btn <- \(target_id) {
     tags$button(
+      id = id,
       class = class,
       type = "button",
       `data-bs-toggle` = "offcanvas",
       `data-bs-target` = sprintf("#%s", target_id),
       `aria-controls` = target_id,
       ...
-    ),
-    content 
+    )
+  }
+
+  structure(
+    btn,
+    class = c("offcanvasTrigger", class(btn))
+  )
+}
+
+#' Offcanvas Link
+#' 
+#' Offcanvas link trigger.
+#' 
+#' @param ... Passed to the button.
+#' @param id ID of the link.
+#' @param class Additional class to pass to the button.
+#' 
+#' @export
+offcanvasLink <- \(
+  ...,
+  id = NULL,
+  class = ""
+) {
+  id <- get_id(id)
+  class <- sprintf("action-button %s", class)
+
+  lnk <- \(target_id) {
+    tags$a(
+      id = id,
+      class = class,
+      `data-bs-toggle` = "offcanvas",
+      `data-bs-target` = sprintf("#%s", target_id),
+      `aria-controls` = target_id,
+      ...
+    )
+  }
+
+  structure(
+    lnk,
+    class = c("offcanvasTrigger", class(lnk))
   )
 }
 

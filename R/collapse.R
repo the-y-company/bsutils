@@ -96,7 +96,7 @@ collapseButton <- \(
 
   btn <- \(target_id){
     class <- sprintf("btn btn-default %s", class)
-    tags$a(
+    tags$button(
       id = id,
       class = class,
       `data-bs-toggle` = "collapse",

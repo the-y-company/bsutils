@@ -21,6 +21,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Collapse
 - Dropdown
 - Offcanvas
+- Progress
 
 ## Example
 

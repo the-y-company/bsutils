@@ -134,6 +134,7 @@ collapseLink <- \(
 
   lnk <- \(target_id){
     tags$a(
+      id = id,
       `data-bs-toggle` = "collapse",
       `aria-expanded` = "false",
       `aria-controls` = target_id,

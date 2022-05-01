@@ -129,7 +129,8 @@ collapse(
     )
   ),
   tabPanel(
-    "dropdown",
+    "Buttons",
+    h4("Dropdown"),
     fluidRow(
       column(
         6,
@@ -152,6 +153,20 @@ dropdownButton(
 )'
         )
       )
+    ),
+    h4("Group"),
+    buttonGroup(
+      actionButton("first", "First", class = "btn-primary"),
+      actionButton("second", "Second", class = "btn-warning"),
+      actionButton("third", "Third", class = "btn-success")
+    ),
+    code(
+'
+buttonGroup(
+  actionButton("first", "First", class = "btn-primary"),
+  actionButton("second", "Second", class = "btn-warning"),
+  actionButton("third", "Third", class = "btn-success")
+)'
     )
   ),
   tabPanel(
@@ -202,6 +217,24 @@ offcanvas(
     ),
     progress(
       progressBar(15, id = "bar")
+    ),
+    h4("UI"),
+    code(
+      '
+actionButton(
+  "rand",
+  "Randomise"
+),
+progress(
+  progressBar(15, id = "bar")
+)'
+    ),
+    h4("Server"),
+    code(
+      '
+observeEvent(input$rand, {
+  update_progress("bar", sample(10:99, 1))
+})'
     )
   ),
   tabPanel(
@@ -218,7 +251,32 @@ offcanvas(
     ),
     h1("Hello"),
     actionButton("show", "Show toast"),
-    actionButton("hide", "Hide toast")
+    actionButton("hide", "Hide toast"),
+    h4("UI"),
+    code(
+      '
+toast(
+  "toast",
+  toastHeader(
+    strong(
+      "Toast",
+      class = "me-auto"
+    )
+  ),
+  toastBody("The body of the toast!")
+)'
+    ),
+    h4("Server"),
+    code(
+      '
+observeEvent(input$show, {
+  toast_show("toast", auto_hide = FALSE)
+})
+
+observeEvent(input$hide, {
+  toast_hide("toast")
+})'
+    )
   )
 )
 

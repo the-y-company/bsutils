@@ -12,9 +12,21 @@ UI utilities for Bootstrap 5 and Shiny.
 devtools::install_github("JohnCoene/bsutils")
 ```
 
+## Utilities
+
+- Accordion
+- Alerts
+- Card
+- Carousel
+- Collapse
+- Dropdown
+- Offcanvas
+
 ## Example
 
-Make sure you use Bootstrap 5.
+Run `bsutils::gallery()` for a demo.
+
+Make sure you use __Bootstrap version 5__.
 
 ```r
 library(shiny)

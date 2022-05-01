@@ -35,7 +35,10 @@ library(shiny)
 
 ui <- fluidPage(
   theme = bslib::bs_theme(version = 5L),
-  offcanvasButton(
+  offcanvas(
+    offcanvasButton(
+      "Open"
+    ),
     offcanvasContent(
       offcanvasHeader(
         "Off canvas"
@@ -43,14 +46,11 @@ ui <- fluidPage(
       p(
         "Hello world"
       )
-    ),
-    "Open"
+    )
   )
 )
 
-server <- \(input, output, session){
-
-}
+server <- \(input, output, session){}
 
 shinyApp(ui, server)
 ```

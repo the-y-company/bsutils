@@ -1,4 +1,5 @@
 library(shiny)
+library(bsutils)
 
 code <- \(code) {
   tags$pre(

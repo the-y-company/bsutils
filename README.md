@@ -5,16 +5,6 @@
 
 UI utilities for Bootstrap 5 and Shiny.
 
-## Note
-
-This is intended to demonstrate some of the functionalities
-that come with Bootstrap 5 which are easily accessible;
-it's 99% pure HTML, and comes with close to no JavaScript.
-
-It either remains like this or grow into a fully-fledged
-utility library to handle all of the "extras," it'll
-depend on what dis actually wanted by the community.
-
 ## Installation
 
 ``` r

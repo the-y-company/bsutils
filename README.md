@@ -24,6 +24,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Offcanvas
 - Progress
 - Toast
+- Tooltip
 
 ## Example
 

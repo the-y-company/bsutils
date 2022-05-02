@@ -308,16 +308,61 @@ modal(
   modalFooter(
     p("The footer of the modal")
   )
-)
-      '
+)'
     ),
     h4("Server"),
     code(
       '
 observeEvent(input$show, {
   modal_show("modal")
-})
-      '
+})'
+    )
+  ),
+  tabPanel(
+    "Tooltips",
+    fluidRow(
+      column(
+        4,
+        withTooltip(
+          span("plain"),
+          "content"
+        )
+      ),
+      column(
+        8,
+        code(
+          '
+withTooltip(
+  span("plain"),
+  "content"
+)'
+        )
+      )
+    ),
+    fluidRow(
+      column(
+        4,
+        withTooltip(
+          span("HTML"),
+          tagList(
+            strong("HTML"),
+            "content"
+          )
+        )
+      ),
+      column(
+        8,
+        code(
+          '
+withTooltip(
+  span("HTML"),
+  tagList(
+    strong("HTML"),
+    "content"
+  )
+)'
+        )
+      )
     )
   )
 )

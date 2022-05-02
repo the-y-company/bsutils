@@ -30,6 +30,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Carousel
 - Collapse
 - Dropdown
+- List group
 - Modal
 - Offcanvas
 - Progress

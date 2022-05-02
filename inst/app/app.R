@@ -364,6 +364,32 @@ withTooltip(
         )
       )
     )
+  ),
+  tabPanel(
+    "List",
+    fluidRow(
+      column(
+        4,
+        listGroup(
+          listGroupItem("Item 1"),
+          listGroupItem("Item 2"),
+          listGroupItem("Item 3"),
+          listGroupItem("Item 4")
+        )
+      ),
+      column(
+        8,
+        code(
+          '
+listGroup(
+  listGroupItem("Item 1"),
+  listGroupItem("Item 2"),
+  listGroupItem("Item 3"),
+  listGroupItem("Item 4")
+)'
+        )
+      )
+    )
   )
 )
 

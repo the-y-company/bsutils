@@ -278,6 +278,47 @@ observeEvent(input$hide, {
   toast_hide("toast")
 })'
     )
+  ),
+  tabPanel(
+    "Modal",
+    actionButton("show_modal", "Show modal"),
+    modal(
+      id = "modal",
+      modalHeader(
+        modalTitle("Title")
+      ),
+      modalBody(
+        p("The content of the modal")
+      ),
+      modalFooter(
+        p("The footer of the modal")
+      )
+    ),
+    h4("UI"),
+    code(
+      '
+modal(
+  id = "modal",
+  modalHeader(
+    modalTitle("Title")
+  ),
+  modalBody(
+    p("The content of the modal")
+  ),
+  modalFooter(
+    p("The footer of the modal")
+  )
+)
+      '
+    ),
+    h4("Server"),
+    code(
+      '
+observeEvent(input$show, {
+  modal_show("modal")
+})
+      '
+    )
   )
 )
 
@@ -295,6 +336,9 @@ server <- \(input, output, session) {
     toast_hide("toast")
   })
 
+  observeEvent(input$show_modal, {
+    modal_show("modal")
+  })
 }
 
 shinyApp(ui, server)

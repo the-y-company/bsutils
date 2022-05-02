@@ -390,6 +390,22 @@ listGroup(
         )
       )
     )
+  ),
+  tabPanel(
+    "Popover",
+    withPopover(
+      span("click me"),
+      "The content",
+      "The title"
+    ),
+    code(
+      '
+withPopover(
+  span("click me"),
+  "The content",
+  "The title"
+)'
+    )
   )
 )
 

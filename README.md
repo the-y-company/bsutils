@@ -33,6 +33,7 @@ devtools::install_github("JohnCoene/bsutils")
 - List group
 - Modal
 - Offcanvas
+- Popover
 - Progress
 - Toast
 - Tooltip

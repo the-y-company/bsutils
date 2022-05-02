@@ -5,4 +5,4 @@ $(document).on('shiny:connected', () => {
       return new bootstrap.Tooltip(tooltipTriggerEl)
     });
   }, 250);
-})
+});

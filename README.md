@@ -20,6 +20,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Carousel
 - Collapse
 - Dropdown
+- Floating text input
 - List group
 - Modal
 - Offcanvas

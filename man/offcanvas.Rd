@@ -3,14 +3,18 @@
 \name{offcanvas}
 \alias{offcanvas}
 \alias{offcanvas.offcanvasTrigger}
+\alias{offcanvas.shiny.tag}
 \title{Offcanvas}
 \usage{
 offcanvas(trigger, content)
 
 \method{offcanvas}{offcanvasTrigger}(trigger, content)
+
+\method{offcanvas}{shiny.tag}(trigger, content)
 }
 \arguments{
-\item{trigger}{A \code{\link[=collapseButton]{collapseButton()}} or \code{\link[=collapseLink]{collapseLink()}}.}
+\item{trigger}{A \code{\link[=collapseButton]{collapseButton()}}, \code{\link[=collapseLink]{collapseLink()}},
+\code{\link[shiny:actionButton]{shiny::actionButton()}}, \code{\link[shiny:actionButton]{shiny::actionLink()}}.}
 
 \item{content}{The offcanvas content as returned by
 \code{\link[=offcanvasContent]{offcanvasContent()}}.}
@@ -20,7 +24,9 @@ Create an offcanvas element.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{offcanvasTrigger}: Offcanvas Wrapper
+\item \code{offcanvasTrigger}: Offcanvas wrapper for \code{\link[=collapseButton]{collapseButton()}}, \code{\link[=collapseLink]{collapseLink()}}.
+
+\item \code{shiny.tag}: Offcanvas wrapper for \code{\link[shiny:actionButton]{shiny::actionButton()}}, \code{\link[shiny:actionButton]{shiny::actionLink()}}.
 }}
 
 \examples{

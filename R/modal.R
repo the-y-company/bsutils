@@ -239,3 +239,47 @@ modal_toggle <- \(
     )
   )
 }
+
+#' Modal Triggers
+#' 
+#' Trigger open a modal with a button or a link,
+#' avoids goind through the server.
+#' 
+#' @param target Target ID of the [modal()] to show.
+#' @param ... Content of link or button, generally a
+#' character vector of length 1.
+#' @param class Additional class to pass to the button.
+#' 
+#' @name modalTrigger
+#' @export 
+modalButton <- \(
+  target,
+  ...,
+  class = ""
+) {
+  if(missing(target))
+    stop("Missing `target`")
+
+  tags$button(
+    class = sprintf("btn btn-default %s", class),
+    `data-bs-toggle` = "modal",
+    `data-bs-target` = sprintf("#%s", target),
+    ...
+  ) 
+}
+
+#' @rdname modalTrigger
+#' @export 
+modalLink <- \(
+  target,
+  ...
+) {
+  if(missing(target))
+    stop("Missing `target`")
+
+  tags$button(
+    `data-bs-toggle` = "modal",
+    `data-bs-target` = sprintf("#%s", target),
+    ...
+  ) 
+}

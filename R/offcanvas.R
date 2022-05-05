@@ -2,7 +2,8 @@
 #' 
 #' Create an offcanvas element.
 #' 
-#' @param trigger A [collapseButton()] or [collapseLink()].
+#' @param trigger A [collapseButton()], [collapseLink()],
+#' [shiny::actionButton()], [shiny::actionLink()].
 #' @param content The offcanvas content as returned by
 #' [offcanvasContent()].
 #' 
@@ -39,7 +40,7 @@
 #' @export
 offcanvas <- \(trigger, content) UseMethod("offcanvas")
 
-#' @describeIn offcanvas Offcanvas Wrapper
+#' @describeIn offcanvas Offcanvas wrapper for [collapseButton()], [collapseLink()].
 #' @method offcanvas offcanvasTrigger
 #' @export 
 offcanvas.offcanvasTrigger <- \(
@@ -56,6 +57,25 @@ offcanvas.offcanvasTrigger <- \(
 
   tagList(
     trigger(target_id),
+    content
+  )
+}
+
+#' @describeIn offcanvas Offcanvas wrapper for [shiny::actionButton()], [shiny::actionLink()].
+#' @method offcanvas shiny.tag
+#' @export 
+offcanvas.shiny.tag <- \(
+  trigger,
+  content
+){
+  if(missing(trigger))
+    stop("Missing `trigger`")
+
+  if(missing(content))
+    stop("Missing `content`")
+
+  tagList(
+    trigger,
     content
   )
 }
@@ -145,11 +165,12 @@ offcanvasContent <- \(
   class = "",
   .position = c("start", "end", "top", "bottom")
 ) {
-  id <- get_id(NULL)
+  id <- get_id(id)
   position <- match.arg(.position)
   class <- sprintf("offcanvas offcanvas-%s %s", position, class)
 
   content <- div(
+    get_dep("offcanvas"),
     class = class,
     tabindex = "-1",
     id = id,
@@ -189,6 +210,67 @@ offcanvasHeader <- \(
       class = "btn-close text-reset",
       `data-bs-dismiss` = "offcanvas",
       `aria-label` = "Close"
+    )
+  )
+}
+
+#' Offcanvas Server
+#' 
+#' Toggle the offcanvas from the server.
+#' 
+#' @param id ID of [offcanvasContent()].
+#' @param session Valid shiny session.
+#' 
+#' @name offcanvasServer
+#' @export 
+offcanvas_show <- \(
+  id,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  if(missing(id))
+    stop("Missing `id`")
+
+  session$sendCustomMessage(
+    "bsutils-offcanvas",
+    list(
+      id = id,
+      action = "show"
+    )
+  )
+}
+
+#' @rdname offcanvasServer
+#' @export 
+offcanvas_hide <- \(
+  id,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  if(missing(id))
+    stop("Missing `id`")
+
+  session$sendCustomMessage(
+    "bsutils-offcanvas",
+    list(
+      id = id,
+      action = "hide"
+    )
+  )
+}
+
+#' @rdname offcanvasServer
+#' @export 
+offcanvas_toggle <- \(
+  id,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  if(missing(id))
+    stop("Missing `id`")
+
+  session$sendCustomMessage(
+    "bsutils-offcanvas",
+    list(
+      id = id,
+      action = "toggle"
     )
   )
 }

@@ -42,9 +42,9 @@ floatingTextInput <- \(
   )
 }
 
-#' Text Input Area Floating Label
+#' Text Area Input Floating Label
 #' 
-#' Text input with floating label.
+#' Text area input with floating label.
 #' 
 #' @param inputId ID of input.
 #' @param label Label of input.
@@ -85,7 +85,18 @@ floatingTextAreaInput <- \(
   )
 }
 
+#' Select Floating Label
+#' 
+#' Select input with floating label.
+#' 
+#' @param inputId ID of input.
+#' @param label Label of input.
+#' @param choices Choices, named vector.
+#' @param ... Passed to input.
+#' 
 #' @importFrom htmltools tagAppendChild
+#' 
+#' @export 
 floatingSelectInput <- \(
   inputId,
   label,
@@ -126,5 +137,30 @@ floatingSelectInput <- \(
       label
     )
   )
+}
 
+switchInput <- \(
+  inputId,
+  label,
+  checked = FALSE,
+  ...
+) {
+  input <- tags$input(
+    class = "form-check-input",
+    type = "checkbox",
+    id = inputId
+  )
+
+  if(checked) 
+    input <- tagAppendAttributes(input, checked = NA)
+
+  div(
+    class = "form-check form-switch",
+    input,
+    tags$label(
+      class = "form-check-label",
+      `for` = inputId,
+      label
+    )
+  )
 }

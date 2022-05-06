@@ -473,6 +473,25 @@ floatingSelectInput(
 )'
         )
       )
+    ),
+    fluidRow(
+      column(
+        6,
+        switchInput(
+          "switch",
+          "Switch input"
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+switchInput(
+  "switch",
+  "Switch input"
+)'
+        )
+      )
     )
   )
 )
@@ -505,6 +524,10 @@ server <- \(input, output, session) {
 
   observeEvent(input$select, {
     print(input$select)
+  })
+
+  observeEvent(input$switch, {
+    print(input$switch)
   })
 }
 

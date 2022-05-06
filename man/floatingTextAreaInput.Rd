@@ -2,7 +2,7 @@
 % Please edit documentation in R/inputs.R
 \name{floatingTextAreaInput}
 \alias{floatingTextAreaInput}
-\title{Text Input Area Floating Label}
+\title{Text Area Input Floating Label}
 \usage{
 floatingTextAreaInput(inputId, label, placeholder, value = "", ...)
 }
@@ -18,5 +18,5 @@ floatingTextAreaInput(inputId, label, placeholder, value = "", ...)
 \item{...}{Passed to input.}
 }
 \description{
-Text input with floating label.
+Text area input with floating label.
 }

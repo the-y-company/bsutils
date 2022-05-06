@@ -28,6 +28,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Offcanvas
 - Popover
 - Progress
+- Switch input
 - Toast
 - Tooltip
 

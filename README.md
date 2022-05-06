@@ -20,6 +20,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Carousel
 - Collapse
 - Dropdown
+- Floating select input
 - Floating text input
 - Floating textarea input
 - List group

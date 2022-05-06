@@ -84,3 +84,47 @@ floatingTextAreaInput <- \(
     )
   )
 }
+
+#' @importFrom htmltools tagAppendChild
+floatingSelectInput <- \(
+  inputId,
+  label,
+  choices = NULL,
+  ...
+) {
+  if(missing(inputId))
+    stop("Missing `inputId`")
+
+  if(missing(label))
+    stop("Missing `label`")
+
+  select <- tags$select(
+    id = inputId,
+    class = "form-select",
+    `aria-label` = label
+  )
+
+  if(!is.null(choices)){
+    for(i in 1:length(choices)) {
+      nm <- names(choices)[i]
+      if(is.null(nm))
+        nm <- unname(choices[i])
+
+      opt <- tags$option(
+        value = unname(choices[i]),
+        nm
+      )
+      select <- tagAppendChildren(select, opt)
+    }
+  }
+
+  div(
+    class = "form-floating",
+    select,
+    tags$label(
+      `for` = inputId,
+      label
+    )
+  )
+
+}

@@ -406,6 +406,74 @@ withPopover(
   "The title"
 )'
     )
+  ),
+  tabPanel(
+    "Inputs",
+    fluidRow(
+      column(
+        6,
+        floatingTextInput(
+          "text",
+          "Text input",
+          "placeholder text"
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+floatingTextInput(
+  "text",
+  "Text input",
+  "placeholder text"
+)'
+        )
+      )
+    ),
+    fluidRow(
+      column(
+        6,
+        floatingTextAreaInput(
+          "textarea",
+          "Text input",
+          "placeholder text",
+          style = "height: 10rem;"
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+floatingTextAreaInput(
+  "textarea",
+  "Text input",
+  "placeholder text",
+  style = "height: 10rem;"
+)'
+        )
+      )
+    ),
+    fluidRow(
+      column(
+        6,
+        floatingSelectInput(
+          "select",
+          "Select Something",
+          letters
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+floatingSelectInput(
+  "select",
+  "Select Something",
+  letters
+)'
+        )
+      )
+    )
   )
 )
 
@@ -425,6 +493,18 @@ server <- \(input, output, session) {
 
   observeEvent(input$show_modal, {
     modal_show("modal")
+  })
+
+  observeEvent(input$text, {
+    print(input$text)
+  })
+
+  observeEvent(input$textarea, {
+    print(input$textarea)
+  })
+
+  observeEvent(input$select, {
+    print(input$select)
   })
 }
 

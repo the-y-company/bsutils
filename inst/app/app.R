@@ -492,6 +492,25 @@ switchInput(
 )'
         )
       )
+    ),
+    fluidRow(
+      column(
+        6,
+        colorPickerInput(
+          "color",
+          value = "#000000"
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+colorPickerInput(
+  "color",
+  value = "#000000"
+)'
+        )
+      )
     )
   )
 )
@@ -528,6 +547,10 @@ server <- \(input, output, session) {
 
   observeEvent(input$switch, {
     print(input$switch)
+  })
+
+  observeEvent(input$color, {
+    print(input$color)
   })
 }
 

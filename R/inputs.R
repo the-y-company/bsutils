@@ -139,16 +139,33 @@ floatingSelectInput <- \(
   )
 }
 
+#' Switch Input
+#' 
+#' Switch input, similar to checkbox.
+#' 
+#' @param inputId ID of input.
+#' @param label Label of input.
+#' @param checked Whether the input is initialised checked.
+#' @param ... Passed to input.
+#' 
+#' @export 
 switchInput <- \(
   inputId,
   label,
   checked = FALSE,
   ...
 ) {
+  if(missing(inputId))
+    stop("Missing `inputId`")
+
+  if(missing(label))
+    stop("Missing `label`")
+
   input <- tags$input(
     class = "form-check-input",
     type = "checkbox",
-    id = inputId
+    id = inputId,
+    ...
   )
 
   if(checked) 
@@ -163,4 +180,47 @@ switchInput <- \(
       label
     )
   )
+}
+
+#' Color Picker Input
+#' 
+#' Color picker input.
+#' 
+#' @param inputId ID of input.
+#' @param value Initial value of the input.
+#' @param ... Passed to input.
+#' 
+#' @export 
+colorPickerInput <- \(
+  inputId,
+  value = NULL,
+  ...
+) {
+  if(missing(inputId))
+    stop("Missing `inputId`")
+
+  tagList(
+    get_dep("color"),
+    tags$input(
+      type = "color",
+      class = "form-control form-control-color bsutils-color",
+      id = inputId,
+      value = value,
+      ...
+    )
+  )
+}
+
+update_color_picker <- \(
+  id,
+  value,
+  session = shiny::getDefaultReactiveDomain()
+){
+  if(missing(id))
+    stop("Missing `id`")
+
+  if(missing(value))
+    stop("Missing `value`")
+
+  session$sendInputMessage(id, value)
 }

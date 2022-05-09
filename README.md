@@ -19,6 +19,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Card
 - Carousel
 - Collapse
+- Color Input
 - Dropdown
 - Floating select input
 - Floating text input

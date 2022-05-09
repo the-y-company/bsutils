@@ -211,6 +211,15 @@ colorPickerInput <- \(
   )
 }
 
+#' Update Color Picker
+#' 
+#' Update a [colorPickerInput()] from the server.
+#' 
+#' @param id ID of input to update.
+#' @param value Value to set.
+#' @param session A valid shiny session.
+#' 
+#' @export 
 update_color_picker <- \(
   id,
   value,

@@ -233,3 +233,65 @@ update_color_picker <- \(
 
   session$sendInputMessage(id, value)
 }
+
+#' Range Input
+#' 
+#' A range input similar to a slider.
+#' 
+#' @param id ID of input.
+#' @param label Label of input.
+#' @param value Initial value of input.
+#' @param min,max Minimum and maximum values of the range.
+#' @param step Step of range change.
+#' @param ... Passed to input.
+#' 
+#' @param 
+rangeInput <- \(
+  id,
+  label,
+  value = 0L,
+  ...,
+  min = 0L,
+  max = 100L,
+  step = 1L
+) {
+  tagList(
+    get_dep("range"),
+    tags$label(
+      label,
+      `for` = id,
+      class = "form-label"
+    ),
+    tags$input(
+      type = "range",
+      class = "form-range bsutils-range",
+      id = id,
+      value = value,
+      min = min,
+      max = max,
+      step = step,
+      ...
+    )
+  )
+}
+
+#' Update Range
+#' 
+#' Update a [rangeInput()] from the server.
+#' 
+#' @param id ID of input to update.
+#' @param session A valid shiny session.
+#' @param ... Elements to update, one or more of,
+#' `value`, `min`, and `max`.
+#' 
+#' @export 
+update_range <- \(
+  id,
+  ...,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  session$sendInputMessage(
+    id,
+    list(...)
+  )
+}

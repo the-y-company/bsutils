@@ -19,7 +19,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Card
 - Carousel
 - Collapse
-- Color Input
+- Color input
 - Dropdown
 - Floating select input
 - Floating text input
@@ -29,6 +29,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Offcanvas
 - Popover
 - Progress
+- Range input
 - Switch input
 - Toast
 - Tooltip

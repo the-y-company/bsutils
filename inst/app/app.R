@@ -511,6 +511,25 @@ colorPickerInput(
 )'
         )
       )
+    ),
+    fluidRow(
+      column(
+        6,
+        rangeInput(
+          "range",
+          "A range input"
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+rangeInput(
+  "range",
+  "A range input"
+)'
+        )
+      )
     )
   )
 )
@@ -551,6 +570,10 @@ server <- \(input, output, session) {
 
   observeEvent(input$color, {
     print(input$color)
+  })
+
+  observeEvent(input$range, {
+    print(input$range)
   })
 }
 

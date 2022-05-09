@@ -530,6 +530,27 @@ rangeInput(
 )'
         )
       )
+    ),
+    fluidRow(
+      column(
+        6,
+        textGroupInput(
+          "textGroup",
+          "@",
+          placeholder = "username"
+        )
+      ),
+      column(
+        6,
+        code(
+          '
+textGroupInput(
+  "textGroup",
+  "@",
+  placeholder = "username"
+)'
+        )
+      )
     )
   )
 )
@@ -574,6 +595,10 @@ server <- \(input, output, session) {
 
   observeEvent(input$range, {
     print(input$range)
+  })
+
+  observeEvent(input$textGroup, {
+    print(input$textGroup)
   })
 }
 

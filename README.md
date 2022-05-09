@@ -31,6 +31,7 @@ devtools::install_github("JohnCoene/bsutils")
 - Progress
 - Range input
 - Switch input
+- Text group input
 - Toast
 - Tooltip
 

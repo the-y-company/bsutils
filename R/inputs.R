@@ -245,7 +245,7 @@ update_color_picker <- \(
 #' @param step Step of range change.
 #' @param ... Passed to input.
 #' 
-#' @param 
+#' @export
 rangeInput <- \(
   id,
   label,
@@ -255,6 +255,12 @@ rangeInput <- \(
   max = 100L,
   step = 1L
 ) {
+  if(missing(id))
+    stop("Missing `id`")
+
+  if(missing(label))
+    stop("Missing `label`")
+
   tagList(
     get_dep("range"),
     tags$label(
@@ -290,8 +296,97 @@ update_range <- \(
   ...,
   session = shiny::getDefaultReactiveDomain()
 ) {
+  if(missing(id))
+    stop("Missing `id`")
+
   session$sendInputMessage(
     id,
     list(...)
+  )
+}
+
+#' Text Group Input
+#' 
+#' Text group input.
+#' 
+#' @param inputId ID of input.
+#' @param label Label of input.
+#' @param value Initial value of input.
+#' @param placeholder Placeholder for input.
+#' @param .position Position of the label.
+#' 
+#' @importFrom htmltools tagAppendChildren attachDependencies
+#' 
+#' @export 
+textGroupInput <- \(
+  inputId,
+  label,
+  value = "",
+  placeholder = NULL,
+  .position = c("left", "right")
+) {
+  if(missing(inputId))
+    stop("Missing `inputId`")
+
+  if(missing(label))
+    stop("Missing `label`")
+
+  .position <- match.arg(.position)
+
+  input <- tags$input(
+    id = inputId,
+    value = value,
+    placeholder = placeholder,
+    class = "form-control bsutils-text-group"
+  )
+
+  label <- span(
+    class = "input-group-text",
+    label
+  )
+
+  wrapper <- div(
+    class = "input-group"
+  )
+
+  if(.position == "left")
+    div <- tagAppendChildren(
+      wrapper,
+      label,
+      input
+    )
+
+  if(.position == "right")
+    div <- tagAppendChildren(
+      wrapper,
+      input,
+      label
+    )
+
+  attachDependencies(
+    div,
+    get_dep("text-group")
+  )
+}
+
+#' Update Text Group Input
+#' 
+#' Update [textGroupInput()].
+#' 
+#' @param id ID of input to update.
+#' @param ... Items to update; `value`, and/or `label`.
+#' @param session Valid shiny session.
+#' 
+#' @export 
+update_text_group <- \(
+  id,
+  ...,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  session$sendInputMessage(
+    id,
+    list(
+      ...
+    )
   )
 }

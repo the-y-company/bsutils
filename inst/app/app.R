@@ -183,7 +183,7 @@ buttonGroup(
         p(
           "Hello world"
         ),
-        uiOutput("text")
+        plotOutput("plot")
       )
     ),
     code(
@@ -556,6 +556,10 @@ textGroupInput(
 )
 
 server <- \(input, output, session) {
+
+  output$plot <- renderPlot({
+    plot(cars)
+  })
 
   observeEvent(input$rand, {
     update_progress("bar", sample(10:99, 1))

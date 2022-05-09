@@ -95,6 +95,11 @@ carousel(
     class = "bg-info rounded p-4"
   )
 )'
+    ),
+    tags$a(
+      "Should I use a carousel?",
+      href = "https://shouldiuseacarousel.com/",
+      target = "_blank"
     )
   ),
   tabPanel(

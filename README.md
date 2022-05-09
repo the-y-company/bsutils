@@ -16,6 +16,7 @@ devtools::install_github("JohnCoene/bsutils")
 
 - Accordion
 - Alerts
+- Badge
 - Card
 - Carousel
 - Collapse

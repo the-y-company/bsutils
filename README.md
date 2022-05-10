@@ -28,6 +28,7 @@ devtools::install_github("JohnCoene/bsutils")
 - List group
 - Modal
 - Offcanvas
+- Placeholder
 - Popover
 - Progress
 - Range input

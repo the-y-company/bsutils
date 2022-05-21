@@ -1,5 +1,7 @@
 #' Alert
 #' 
+#' @param id ID of alert useful to toggle from server with
+#' [alert_show()] or [alert_hide()].
 #' @param ... Content of alert.
 #' @param class Additional classes, e.g.: `alert-success`.
 #' 
@@ -12,12 +14,17 @@
 #' @export
 alert <- \(
   ...,
+  id = NULL,
   class = ""
 ) {
-  div(
-    class = sprintf("alert %s", class),
-    role = "alert",
-    ...
+  tagList(
+    get_dep("alert"),
+    div(
+      id = id,
+      class = sprintf("alert %s", class),
+      role = "alert",
+      ...
+    )
   )
 }
 
@@ -37,5 +44,36 @@ alertHeading <- \(heading){
   tagAppendAttributes(
     heading,
     class = "alert-heading"
+  )
+}
+
+#' Toggle Alert
+#' 
+#' Show or hide an alert.
+#' 
+#' @param id ID of [alert()] to toggle.
+#' @param session A valid shiny session.
+#' 
+#' @name alertServer
+#' @export 
+alert_show <- \(
+  id,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  session$sendCustomMessage(
+    "alert-show",
+    id
+  )
+}
+
+#' @rdname alertServer
+#' @export 
+alert_hide <- \(
+  id,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  session$sendCustomMessage(
+    "alert-hide",
+    id
   )
 }

@@ -4,10 +4,13 @@
 \alias{alert}
 \title{Alert}
 \usage{
-alert(..., class = "")
+alert(..., id = NULL, class = "")
 }
 \arguments{
 \item{...}{Content of alert.}
+
+\item{id}{ID of alert useful to toggle from server with
+\code{\link[=alert_show]{alert_show()}} or \code{\link[=alert_hide]{alert_hide()}}.}
 
 \item{class}{Additional classes, e.g.: \code{alert-success}.}
 }

@@ -148,15 +148,18 @@ carouselControls <- \(
 #' Carousel item to use within [carousel()].
 #' 
 #' @param ... Content of item.
+#' @param interval Number of milliseconds this item should be shown.
 #' @param class Additional classes.
 #' 
 #' @export 
 carouselItem <- \(
   ...,
+  interval = NULL,
   class = ""
 ) {
   div(
     class = sprintf("carousel-item %s", class),
+    `data-bs-interval` = interval,
     ...
   )
 }

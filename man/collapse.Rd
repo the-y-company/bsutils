@@ -20,9 +20,9 @@ Create a collapsible.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{collapseTrigger}: Collapse wrapper
-}}
+\item \code{collapse(collapseTrigger)}: Collapse wrapper
 
+}}
 \examples{
 library(shiny)
 

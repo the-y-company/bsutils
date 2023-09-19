@@ -24,11 +24,11 @@ Create an offcanvas element.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{offcanvasTrigger}: Offcanvas wrapper for \code{\link[=collapseButton]{collapseButton()}}, \code{\link[=collapseLink]{collapseLink()}}.
+\item \code{offcanvas(offcanvasTrigger)}: Offcanvas wrapper for \code{\link[=collapseButton]{collapseButton()}}, \code{\link[=collapseLink]{collapseLink()}}.
 
-\item \code{shiny.tag}: Offcanvas wrapper for \code{\link[shiny:actionButton]{shiny::actionButton()}}, \code{\link[shiny:actionButton]{shiny::actionLink()}}.
+\item \code{offcanvas(shiny.tag)}: Offcanvas wrapper for \code{\link[shiny:actionButton]{shiny::actionButton()}}, \code{\link[shiny:actionButton]{shiny::actionLink()}}.
+
 }}
-
 \examples{
 library(shiny)
 

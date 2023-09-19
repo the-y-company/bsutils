@@ -4,10 +4,12 @@
 \alias{carouselItem}
 \title{Carousel Item}
 \usage{
-carouselItem(..., class = "")
+carouselItem(..., interval = NULL, class = "")
 }
 \arguments{
 \item{...}{Content of item.}
+
+\item{interval}{Number of milliseconds this item should be shown.}
 
 \item{class}{Additional classes.}
 }

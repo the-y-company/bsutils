@@ -87,6 +87,7 @@ offcanvas.shiny.tag <- \(
 #' @param ... Passed to the button.
 #' @param id ID of the button.
 #' @param class Additional class to pass to the button.
+#' @inheritParams withTooltip
 #' 
 #' @export
 offcanvasButton <- \(
@@ -107,6 +108,49 @@ offcanvasButton <- \(
       `aria-controls` = target_id,
       ...
     )
+  }
+
+  structure(
+    btn,
+    class = c("offcanvasTrigger", class(btn))
+  )
+}
+
+#' @rdname offcanvasButton
+#' @export
+offcanvasButtonWithTooltip <- \(
+  ...,
+  title,
+  placement = c(
+    "top",
+    "right",
+    "bottom",
+    "left"
+  ),
+  id = NULL,
+  class = ""
+) {
+  placement <- match.arg(placement)
+  id <- get_id(id)
+  class <- sprintf("btn btn-default action-button %s", class)
+
+  btn <- \(target_id) {
+    tags$span(
+      `data-bs-toggle` = "offcanvas",
+      `data-bs-target` = sprintf("#%s", target_id),
+      `aria-controls` = target_id,
+      tags$button(
+        id = id,
+        title = HTML(as.character(title)),
+        class = class,
+        type = "button",
+        `data-bs-toggle` = "tooltip",
+        ...
+      )
+    ) |>
+      htmltools::attachDependencies(
+        get_dep("tooltip")
+      )
   }
 
   structure(

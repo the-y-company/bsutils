@@ -2,9 +2,18 @@
 % Please edit documentation in R/offcanvas.R
 \name{offcanvasButton}
 \alias{offcanvasButton}
+\alias{offcanvasButtonWithTooltip}
 \title{Offcanvas Button}
 \usage{
 offcanvasButton(..., id = NULL, class = "")
+
+offcanvasButtonWithTooltip(
+  ...,
+  title,
+  placement = c("top", "right", "bottom", "left"),
+  id = NULL,
+  class = ""
+)
 }
 \arguments{
 \item{...}{Passed to the button.}
@@ -12,6 +21,10 @@ offcanvasButton(..., id = NULL, class = "")
 \item{id}{ID of the button.}
 
 \item{class}{Additional class to pass to the button.}
+
+\item{title}{HTML tag or character vector of length 1.}
+
+\item{placement}{Placement of the tooltip.}
 }
 \description{
 Offcanvas button trigger.

@@ -201,13 +201,15 @@ offcanvasLink <- \(
 #' @param id Id of the canvas.
 #' @param class Additional classes.
 #' @param .position Where the canvas should open.
+#' @param scroll Whether to allow scrolling the body.
 #' 
 #' @export 
 offcanvasContent <- \(
   ...,
   id = NULL,
   class = "",
-  .position = c("start", "end", "top", "bottom")
+  .position = c("start", "end", "top", "bottom"),
+  scroll = TRUE
 ) {
   id <- get_id(id)
   position <- match.arg(.position)
@@ -218,6 +220,7 @@ offcanvasContent <- \(
     class = class,
     tabindex = "-1",
     id = id,
+    `data-bs-scroll` = tolower(scroll),
     div(
       class = "offcanvas-body",
       ...

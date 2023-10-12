@@ -8,7 +8,8 @@ offcanvasContent(
   ...,
   id = NULL,
   class = "",
-  .position = c("start", "end", "top", "bottom")
+  .position = c("start", "end", "top", "bottom"),
+  scroll = TRUE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ offcanvasContent(
 \item{class}{Additional classes.}
 
 \item{.position}{Where the canvas should open.}
+
+\item{scroll}{Whether to allow scrolling the body.}
 }
 \description{
 Offcanvas content.

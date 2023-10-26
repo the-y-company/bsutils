@@ -122,12 +122,16 @@ toastBody <- \(
 #' @param delay Milliseconds after which to hide the
 #' toast (if `auto_hide = TRUE`).
 #' @param session A valid shiny session.
+#' @param header,body Header and body of the toast
+#'  to replace existing content.
 #' 
 #' @name toastToggle
 #' 
 #' @export
 toast_show <- \(
   id,
+  header = NULL,
+  body = NULL,
   animation = TRUE,
   auto_hide = TRUE,
   delay = 5000L,
@@ -135,11 +139,19 @@ toast_show <- \(
 ) {
   id <- namespace(session, id)
 
+  if(!is.null(body))
+    body <- as.character(body)
+
+  if(!is.null(header))
+    header <- as.character(header)
+
   session$sendCustomMessage(
     "bsutils-toast", 
     list(
       id = id,
       action = "show",
+      body = body,
+      header = header,
       opts = list(
         animation = animation,
         autohide = auto_hide,

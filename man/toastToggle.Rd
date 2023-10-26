@@ -8,6 +8,8 @@
 \usage{
 toast_show(
   id,
+  header = NULL,
+  body = NULL,
   animation = TRUE,
   auto_hide = TRUE,
   delay = 5000L,
@@ -18,6 +20,9 @@ toast_hide(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{id}{ID of \code{\link[=toast]{toast()}} to toggle.}
+
+\item{header, body}{Header and body of the toast
+to replace existing content.}
 
 \item{animation}{Whether to animate the toast.}
 

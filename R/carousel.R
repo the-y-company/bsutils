@@ -54,13 +54,16 @@ carousel <- \(
     items
   )
 
-  div(
-    id = id,
-    class = sprintf("carousel slide %s", class),
-    `data-bs-ride` = "carousel",
-    carouselIndicators(items, id, indicators),
-    inner,
-    carouselControls(controls, id)
+  tagList(
+    get_dep("carousel"),
+    div(
+      id = id,
+      class = sprintf("bsutils-carousel carousel slide %s", class),
+      `data-bs-ride` = "carousel",
+      carouselIndicators(items, id, indicators),
+      inner,
+      carouselControls(controls, id)
+    )
   )
 }
 

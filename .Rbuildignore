@@ -2,3 +2,4 @@
 ^dev$
 ^makefile$
 ^\.vscode$
+^test\.R$
